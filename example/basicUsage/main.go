@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"reqlog/pkg"
 )
 
@@ -13,7 +12,7 @@ type TestStruct struct {
 }
 
 func main() {
-	logger := pkg.NewLogger(os.Getenv("log_url"), os.Getenv("log_token"))
+	logger := pkg.NewLogger("http://127.0.0.1/api/log", "token")
 	var res *http.Response
 	var err error
 	var test struct {
