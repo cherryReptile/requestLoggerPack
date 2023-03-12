@@ -15,13 +15,11 @@ func main() {
 		go logger.LogINFO(i, errCh)
 	}
 
-	for {
-		select {
-		case err := <-errCh:
-			fmt.Println(err)
-		case <-time.After(time.Second * 2):
-			fmt.Println("accepted signal, stopping...")
-			return
-		}
+	select {
+	case err := <-errCh:
+		fmt.Println(err)
+	case <-time.After(time.Second * 2):
+		fmt.Println("accepted signal, stopping...")
+		return
 	}
 }
